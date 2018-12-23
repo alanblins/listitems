@@ -1,13 +1,5 @@
 var ListView = (function ($){
-    function toogleClass(el,color1,color2){
-        if(el.hasClass(color1)){
-            el.removeClass(color1);
-            el.addClass(color2);
-        }else {
-            el.removeClass(color2);
-            el.addClass(color1);
-        }                
-    }
+    
 
     var Component = function(element,options){
         this.element = element;
@@ -56,16 +48,26 @@ var ListView = (function ($){
     }
 
     Component.prototype.boxClickHandler = function(itemElement){
-        toogleClass(itemElement,'bg-green','bg-blue');
+        this.toogleClass(itemElement,'bg-green','bg-blue');
     }
 
     Component.prototype.itemClickHandler = function(itemElement){
-        toogleClass(itemElement,'bg-green','bg-red');
+        this.toogleClass(itemElement,'bg-green','bg-red');
     }
 
     Component.prototype.xButtonClickHandler = function(e,itemElement){
         e.preventDefault();
         itemElement.closest('li').remove();
+    }
+
+    Component.prototype.toogleClass = function(el,color1,color2){
+        if(el.hasClass(color1)){
+            el.removeClass(color1);
+            el.addClass(color2);
+        }else {
+            el.removeClass(color2);
+            el.addClass(color1);
+        }                
     }
 
     Component.prototype.loadData = function(data){
