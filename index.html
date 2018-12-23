@@ -1,0 +1,58 @@
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="ListView.js"></script>
+</head>
+
+<style>
+    #boxes{
+        padding:10px;
+    }
+    li{
+        padding:5px;
+    }
+    .bg-green{
+        background-color:green;
+    }
+    .bg-red{
+        background-color:red;
+    }
+    .bg-blue{
+        background-color:blue;
+    }
+    span{
+        background-color:white;
+    }
+</style>
+<body>
+<div id="boxes" class="bg-green">
+</div>
+<button id="addNew">Add new One</button>
+<input type="text" id="content"/>
+<div id="boxes2" class="bg-green">
+</div>
+
+<button id="addNew2">Add new One</button>
+<input type="text" id="content2"/>
+
+<script lang="javascript">
+        var listViewComponent = ListView.create($('#boxes'),['Jessica','Claudio Nelson','   ','Epaminodas Gustavo'],{onItemAdded:function(e,data){
+            console.log(data);
+        }});
+        var listViewComponent2 = ListView.create($('#boxes2'),['Oxiton'],{onItemAdded:function(e,data){
+            console.log("data 2",data);
+        }});
+        
+        $('#addNew').on('click',function(event,data){
+            var text = $('#content').val();
+            listViewComponent.addNew(text);
+        });
+
+        $('#addNew2').on('click',function(event,data){
+            var text = $('#content2').val();
+            listViewComponent2.addNew(text);
+        });
+
+</script>
+</body>
+</html>
